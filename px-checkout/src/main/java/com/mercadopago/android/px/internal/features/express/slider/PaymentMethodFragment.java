@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import com.meli.android.carddrawer.model.CardDrawerView;
+import com.meli.android.carddrawer.model.Label;
 import com.meli.android.carddrawer.model.customview.CardDrawerSwitch;
 import com.meli.android.carddrawer.model.customview.SwitchModel;
 import com.mercadopago.android.px.R;
@@ -42,9 +43,9 @@ public abstract class PaymentMethodFragment<T extends DrawableFragmentItem>
     private static final int CONTENT_DESCRIPTION_DELAY = 800;
 
     private CardView card;
-    private BottomSlideAnimationSet animation;
+  //  private BottomSlideAnimationSet animation;
     private boolean focused;
-    private MPTextView bottomDescription;
+ //   private MPTextView bottomDescription;
     private Handler handler;
     private CardDrawerView cardDrawerView;
     @Nullable
@@ -71,7 +72,7 @@ public abstract class PaymentMethodFragment<T extends DrawableFragmentItem>
     @Override
     public void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        animation = new BottomSlideAnimationSet();
+   //     animation = new BottomSlideAnimationSet();
         handler = new Handler();
     }
 
@@ -95,7 +96,7 @@ public abstract class PaymentMethodFragment<T extends DrawableFragmentItem>
     @CallSuper
     public void initializeViews(@NonNull final View view) {
         card = view.findViewById(R.id.payment_method);
-        bottomDescription = view.findViewById(R.id.bottom_description);
+      //  bottomDescription = view.findViewById(R.id.bottom_description);
         cardDrawerView = view.findViewById(R.id.card);
         updateView();
         setUpCardDrawerCustomView();
@@ -104,17 +105,17 @@ public abstract class PaymentMethodFragment<T extends DrawableFragmentItem>
     @Override
     public void updateView() {
         final View view = getView();
-        if (model.shouldHighlightBottomDescription()) {
-            final View highlightContainer = view.findViewById(R.id.bottom_description_container);
-            highlightContainer.setVisibility(View.INVISIBLE);
-            bottomDescription.setVisibility(View.INVISIBLE);
-            animation.initialize(Arrays.asList(highlightContainer, bottomDescription));
-        } else {
-            ViewUtils.setBackgroundColor(view.findViewById(R.id.bottom_description_background),
-                model.getBottomDescription().getBackgroundColor());
-            ViewUtils.loadOrHide(View.INVISIBLE, model.getBottomDescription(), bottomDescription);
-            view.findViewById(R.id.bottom_description_shadow).setVisibility(View.INVISIBLE);
-        }
+//        if (model.shouldHighlightBottomDescription()) {
+//            final View highlightContainer = view.findViewById(R.id.bottom_description_container);
+//            highlightContainer.setVisibility(View.INVISIBLE);
+//            bottomDescription.setVisibility(View.INVISIBLE);
+//            animation.initialize(Arrays.asList(highlightContainer, bottomDescription));
+//        } else {
+//            ViewUtils.setBackgroundColor(view.findViewById(R.id.bottom_description_background),
+//                model.getBottomDescription().getBackgroundColor());
+//            ViewUtils.loadOrHide(View.INVISIBLE, model.getBottomDescription(), bottomDescription);
+//            view.findViewById(R.id.bottom_description_shadow).setVisibility(View.INVISIBLE);
+//        }
         if (hasFocus()) {
             onFocusIn();
         }
@@ -177,7 +178,7 @@ public abstract class PaymentMethodFragment<T extends DrawableFragmentItem>
 
     @Override
     public void updateHighlightText(@Nullable final String text) {
-        bottomDescription.setText(text);
+       // bottomDescription.setText(text);
     }
 
     @Override
@@ -258,21 +259,26 @@ public abstract class PaymentMethodFragment<T extends DrawableFragmentItem>
 
     @Override
     public void animateHighlightMessageIn() {
-        if (shouldAnimate()) {
-            animation.slideUp();
-        }
+//        if (shouldAnimate()) {
+//            animation.slideUp();
+//        }
+        Label label = new Label(
+                new Label.Text("PROBANDO", "#FFFFFF", "bold"),
+                "#C65812");
+        cardDrawerView.showCustomLabel(label);
     }
 
     @Override
     public void animateHighlightMessageOut() {
-        if (shouldAnimate()) {
-            animation.slideDown();
-        }
+//        if (shouldAnimate()) {
+//            animation.slideDown();
+//        }
+        cardDrawerView.hideCustomLabel();
     }
 
-    private boolean shouldAnimate() {
-        return animation != null && TextUtil.isNotEmpty(bottomDescription.getText());
-    }
+//    private boolean shouldAnimate() {
+//        return animation != null && TextUtil.isNotEmpty(bottomDescription.getText());
+//    }
 
     @Override
     public void disable() {

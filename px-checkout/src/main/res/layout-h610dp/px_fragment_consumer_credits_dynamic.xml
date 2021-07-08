@@ -77,7 +77,7 @@
                 app:layout_constraintVertical_bias="1.0"
                 tools:text="Al confirmar, aceptás los términos generales y las condiciones particulares de este préstamo." />
 
-            <include layout="@layout/card_drawer_highlight_text_medium_res" />
+<!--            <include layout="@layout/card_drawer_highlight_text_medium_res" />-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
