@@ -14,7 +14,7 @@ public interface PaymentMethod {
 
         void disable();
 
-        void animateHighlightMessageIn();
+        void animateHighlightMessageIn(@Nullable final String text);
 
         void animateHighlightMessageOut();
     }

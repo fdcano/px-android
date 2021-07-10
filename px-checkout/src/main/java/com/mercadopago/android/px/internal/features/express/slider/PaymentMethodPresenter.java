@@ -42,8 +42,7 @@ class PaymentMethodPresenter extends BasePresenter<PaymentMethod.View> implement
     @Override
     public void onFocusIn() {
         if (item.shouldHighlightBottomDescription()) {
-            getView().updateHighlightText(getHighlightText());
-            getView().animateHighlightMessageIn();
+            getView().animateHighlightMessageIn(getHighlightText());
         }
     }
 
