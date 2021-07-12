@@ -166,9 +166,6 @@ public abstract class PaymentMethodFragment<T extends DrawableFragmentItem>
     }
 
     @Override
-    public void updateHighlightText(@Nullable final String text) { }
-
-    @Override
     public void setUserVisibleHint(final boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
@@ -245,31 +242,22 @@ public abstract class PaymentMethodFragment<T extends DrawableFragmentItem>
     }
 
     @Override
-    public void animateHighlightMessageIn(String message) {
-        if (shouldAnimate()) {
-            Text text = model.getBottomDescription();
-            assert text != null;
-            Label label = new Label(
-                    new Label.Text(message, text.getTextColor(), text.getWeight()),
-                    text.getBackgroundColor());
-            cardDrawerView.showCustomLabel(label);
+    public void animateHighlightMessageIn(@Nullable String message) {
+        if (message != null && cardDrawerView != null) {
+            cardDrawerView.showCustomLabel(createLabel(message, model.getBottomDescription()));
         }
+    }
 
-        Label label = new Label(
-                new Label.Text("mensaje destacado", "#FFFFFF", "black"),
-                "dasdas");
-        cardDrawerView.showCustomLabel(label);
+    private Label createLabel(String message, @Nullable Text text) {
+        return text != null ? new Label(message, text.getTextColor(), text.getWeight(), text.getBackgroundColor()) :
+                new Label(message, null, null, null);
     }
 
     @Override
     public void animateHighlightMessageOut() {
-      //  if (shouldAnimate()) {
+        if (cardDrawerView != null) {
             cardDrawerView.hideCustomLabel();
-      //  }
-    }
-
-    private boolean shouldAnimate() {
-        return model.getBottomDescription() != null;
+        }
     }
 
     @Override
