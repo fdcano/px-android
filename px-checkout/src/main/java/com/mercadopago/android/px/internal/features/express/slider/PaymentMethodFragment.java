@@ -244,7 +244,8 @@ public abstract class PaymentMethodFragment<T extends DrawableFragmentItem>
     @Override
     public void animateHighlightMessageIn(@Nullable String message) {
         if (message != null && cardDrawerView != null) {
-            cardDrawerView.showCustomLabel(createLabel(message, model.getBottomDescription()));
+            cardDrawerView.setBottomLabel(createLabel(message, model.getBottomDescription()));
+            cardDrawerView.showBottomLabel();
         }
     }
 
@@ -256,7 +257,7 @@ public abstract class PaymentMethodFragment<T extends DrawableFragmentItem>
     @Override
     public void animateHighlightMessageOut() {
         if (cardDrawerView != null) {
-            cardDrawerView.hideCustomLabel();
+            cardDrawerView.hideBottomLabel();
         }
     }
 
