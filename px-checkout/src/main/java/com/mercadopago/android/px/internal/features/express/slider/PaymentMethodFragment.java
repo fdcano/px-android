@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
 import android.widget.ImageView;
@@ -24,19 +23,14 @@ import com.mercadopago.android.px.R;
 import com.mercadopago.android.px.internal.base.BasePagerFragment;
 import com.mercadopago.android.px.internal.di.Session;
 import com.mercadopago.android.px.internal.features.disable_payment_method.DisabledPaymentMethodDetailDialog;
-import com.mercadopago.android.px.internal.features.express.animations.BottomSlideAnimationSet;
 import com.mercadopago.android.px.internal.features.generic_modal.GenericDialog;
 import com.mercadopago.android.px.internal.features.generic_modal.GenericDialogAction;
 import com.mercadopago.android.px.internal.features.generic_modal.GenericDialogItem;
 import com.mercadopago.android.px.internal.util.TextUtil;
-import com.mercadopago.android.px.internal.util.ViewUtils;
 import com.mercadopago.android.px.internal.view.DynamicHeightViewPager;
-import com.mercadopago.android.px.internal.view.MPTextView;
 import com.mercadopago.android.px.internal.viewmodel.drawables.DrawableFragmentItem;
 import com.mercadopago.android.px.model.internal.DisabledPaymentMethod;
 import com.mercadopago.android.px.model.internal.Text;
-
-import java.util.Arrays;
 
 import static com.mercadopago.android.px.internal.util.AccessibilityUtilsKt.executeIfAccessibilityTalkBackEnable;
 
